@@ -13,5 +13,6 @@ public class Main {
         Vehicle vehicle = context.getBean(Vehicle.class);
         System.out.println("Vehicle name is: " + vehicle.getName());
         vehicle.printHello();
+        context.close();
     }
 }
