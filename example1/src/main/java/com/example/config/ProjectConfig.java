@@ -3,10 +3,12 @@ package com.example.config;
 import com.example.beans.Vehicle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ProjectConfig {
 
+    @Primary
     @Bean
     Vehicle vehicle(){
         var veh = new Vehicle();
