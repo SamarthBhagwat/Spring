@@ -3,6 +3,7 @@ package com.example.main;
 import com.example.beans.Vehicle;
 import com.example.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -45,6 +46,14 @@ public class Main {
         Vehicle vehicle = context.getBean(Vehicle.class);
         System.out.println("Bean of class Vehicle created and name of bean is: "+ vehicle.getName());
 
+        context.close();
 
+
+        // Creating context using xml config
+        var xmlContext = new ClassPathXmlApplicationContext("beans.xml");
+        Vehicle xmlVehicle = xmlContext.getBean(Vehicle.class);
+        System.out.println("Name of the bean in xml context is: " + xmlVehicle.getName());
+
+        xmlContext.close();
     }
 }
