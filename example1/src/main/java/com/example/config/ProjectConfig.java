@@ -14,21 +14,21 @@ public class ProjectConfig {
         return veh;
     }
 
-    @Bean
+    @Bean(name = "audiVehicle")
     Vehicle vehicle1(){
         var vehicle1 = new Vehicle();
         vehicle1.setName("Audi");
         return vehicle1;
     }
 
-    @Bean
+    @Bean(value = "hondaVehicle")
     Vehicle vehicle2(){
         var vehicle2 = new Vehicle();
         vehicle2.setName("Honda");
         return vehicle2;
     }
 
-    @Bean
+    @Bean("ferrariVehicle")
     Vehicle vehicle3(){
         var vehicle3 = new Vehicle();
         vehicle3.setName("Ferrari");
