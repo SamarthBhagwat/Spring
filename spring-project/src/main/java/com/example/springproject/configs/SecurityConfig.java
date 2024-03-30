@@ -28,7 +28,7 @@ public class SecurityConfig {
 
         */
 
-        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((requests) ->
+        http.csrf((auth) -> auth.ignoringRequestMatchers("/saveMsg")).authorizeHttpRequests((requests) ->
                 requests.requestMatchers("/", "/home").permitAll()
                         .requestMatchers("/dashboard").authenticated()
                         .requestMatchers("/holidays/**").permitAll()
@@ -37,6 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/courses").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/logout").permitAll()
                         .requestMatchers("/assets/**").permitAll()
         );
         http.formLogin((auth) -> auth.loginPage("/login").defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
