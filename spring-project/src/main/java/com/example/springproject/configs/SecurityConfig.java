@@ -30,14 +30,17 @@ public class SecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((requests) ->
                 requests.requestMatchers("/", "/home").permitAll()
+                        .requestMatchers("/dashboard").authenticated()
                         .requestMatchers("/holidays/**").permitAll()
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/saveMsg").permitAll()
                         .requestMatchers("/courses").permitAll()
                         .requestMatchers("/about").permitAll()
+                        .requestMatchers("/login").permitAll()
                         .requestMatchers("/assets/**").permitAll()
         );
-        http.formLogin(withDefaults());
+        http.formLogin((auth) -> auth.loginPage("/login").defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
+                .logout((auth) -> auth.logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll());
         http.httpBasic(withDefaults());
         return http.build();
     }
