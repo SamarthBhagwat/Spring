@@ -1,9 +1,13 @@
-package example.config;
+package com.example.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan(basePackages = "com.example.beans")
+@ComponentScan(basePackages = {"com.example.aspects",
+        "com.example.services",
+        "com.example.implementations"})
+@EnableAspectJAutoProxy
 public class ProjectConfig {
 }

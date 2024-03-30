@@ -1,5 +1,7 @@
-package interfaces;
+package com.example.interfaces;
+
+import com.example.pojo.Song;
 
 public interface Speakers {
-    String makeSound();
+    String makeSound(Song song);
 }

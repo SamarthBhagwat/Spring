@@ -1,7 +1,8 @@
-package services;
+package com.example.services;
 
-import interfaces.Speakers;
-import interfaces.Tyres;
+import com.example.interfaces.Speakers;
+import com.example.interfaces.Tyres;
+import com.example.pojo.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,10 @@ public class VehicleServices {
     private Tyres tyres;
 
 
-    public void playMusic(){
-        String sound = speakers.makeSound();
-        System.out.println(sound);
+    public void playMusic(boolean vehicleStarted, Song song){
+        throw new NullPointerException("Damn!! Null pointer exception occurred");
+//        String sound = speakers.makeSound(song);
+//        System.out.println(sound);
     }
 
     public void moveVehicle(){

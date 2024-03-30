@@ -1,8 +1,7 @@
-package com.example.singleton.main;
+package com.example.prototype.main;
 
-import com.example.singleton.beans.Vehicle;
-import com.example.singleton.beans.VehicleServices;
-import com.example.singleton.config.ProjectConfig;
+import com.example.prototype.beans.VehicleServices;
+import com.example.prototype.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {

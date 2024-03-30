@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class Person {
     private String name = "Lucy";
 
-    private Vehicle vehicle;
+    private final Vehicle vehicle;
 
     @Autowired
     Person(Vehicle vehicle){
@@ -27,7 +27,7 @@ public class Person {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
+//    public void setVehicle(Vehicle vehicle) {
+//        this.vehicle = vehicle;
+//    }
 }

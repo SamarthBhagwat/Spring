@@ -3,8 +3,10 @@ package com.example.main;
 //import com.example.constructor.beans.Person;
 //import com.example.constructor.beans.Vehicle;
 //import com.example.constructor.config.ProjectConfig;
-import com.example.multiplebeansofsametype.beans.Person;
-import com.example.multiplebeansofsametype.config.*;
+import com.example.field.beans.*;
+import com.example.field.config.*;
+//import com.example.multiplebeansofsametype.beans.Person;
+//import com.example.multiplebeansofsametype.config.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {

@@ -1,4 +1,4 @@
-package com.example.singleton.beans;
+package com.example.prototype.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

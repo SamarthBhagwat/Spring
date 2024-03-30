@@ -1,7 +1,8 @@
-package example.main;
+package com.example.main;
 
-import com.example.beans.Vehicle;
 import com.example.config.ProjectConfig;
+import com.example.pojo.Song;
+import com.example.services.VehicleServices;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -10,9 +11,13 @@ public class Main {
 
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        Vehicle vehicle = context.getBean(Vehicle.class);
-        System.out.println("Vehicle name is: " + vehicle.getName());
-        vehicle.printHello();
+        Song song = new Song();
+        song.setTitle("Ve kamliya");
+        song.setSinger("Arijit singh");
+        var vehicleServices = context.getBean(VehicleServices.class);
+        System.out.println(vehicleServices.getClass());
+        boolean vehicleStarted = true;
+        vehicleServices.playMusic(vehicleStarted, song);
         context.close();
     }
 }
