@@ -28,4 +28,9 @@ public class ContactRepository {
         String sql = "SELECT * from contact_msg WHERE status = ?";
         return jdbcTemplate.query(sql, new ContactRowMapper(), status);
     }
+
+    public int closeMessageById(int contactMessageId, String status, Timestamp updatedAt, String updatedBy){
+        String sql = "UPDATE contact_msg SET status = ?, updated_at = ?, updated_by = ? WHERE contact_id = ?";
+        return jdbcTemplate.update(sql, status, updatedAt, updatedBy, contactMessageId);
+    }
 }
