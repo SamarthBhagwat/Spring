@@ -1,12 +1,14 @@
 package com.example.springproject.repositories;
 
 import com.example.springproject.models.Contact;
+import com.example.springproject.rowMappers.ContactRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Slf4j
 @Repository
@@ -20,5 +22,10 @@ public class ContactRepository {
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql, contact.getName(), contact.getMobileNum(), contact.getEmail(), contact.getSubject(),
                 contact.getMessage(), contact.getStatus(), Timestamp.valueOf(contact.getCreatedAt()), contact.getCreatedBy());
+    }
+
+    public List<Contact> displayMessagesByStatus(String status){
+        String sql = "SELECT * from contact_msg WHERE status = ?";
+        return jdbcTemplate.query(sql, new ContactRowMapper(), status);
     }
 }

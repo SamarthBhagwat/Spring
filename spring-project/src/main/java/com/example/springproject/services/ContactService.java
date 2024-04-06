@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.springproject.repositories.ContactRepository;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -27,5 +28,9 @@ public class ContactService {
         if(result > 0)
             isSaved = true;
         return isSaved;
+    }
+
+    public List<Contact> displayMessagesByStatus(){
+        return contactRepository.displayMessagesByStatus(ApplicationConstants.DEFAULT_CONTACT_STATUS);
     }
 }

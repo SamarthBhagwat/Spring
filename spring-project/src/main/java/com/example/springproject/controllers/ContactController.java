@@ -11,6 +11,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -50,5 +53,14 @@ public class ContactController {
         }
         contactService.saveMessage(contact);
         return "redirect:/contact";
+    }
+
+    @RequestMapping(value = "/displayMessages", method = RequestMethod.GET)
+    public ModelAndView displayMessages(){
+        List<Contact> contacts = contactService.displayMessagesByStatus();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("messages");
+        modelAndView.addObject("contactMsgs", contacts);
+        return modelAndView;
     }
 }

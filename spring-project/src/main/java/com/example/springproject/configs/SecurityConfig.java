@@ -45,6 +45,7 @@ public class SecurityConfig {
                         .requestMatchers(mvcMatcherBuilder.pattern("/about")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/login")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/logout")).permitAll()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
                         .requestMatchers(mvcMatcherBuilder.pattern("/assets/**")).permitAll()
         );
 
