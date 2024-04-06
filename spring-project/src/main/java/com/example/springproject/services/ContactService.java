@@ -1,17 +1,31 @@
 package com.example.springproject.services;
 
 import com.example.springproject.models.Contact;
+import com.example.springproject.utils.ApplicationConstants;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.springproject.repositories.ContactRepository;
+import java.time.LocalDateTime;
 
-import java.util.logging.Logger;
-
+@Slf4j
 @Service
 public class ContactService {
+    private final ContactRepository contactRepository;
 
-    private static final Logger logger = Logger.getLogger(ContactService.class.getName());
-    public boolean saveMessageInDB(Contact contact){
-        boolean isSaved = true;
-        logger.info("Messages saved in DB");
-        return true;
+    @Autowired
+    public ContactService(ContactRepository contactRepository){
+        this.contactRepository = contactRepository;
+    }
+
+    public boolean saveMessage(Contact contact){
+        boolean isSaved = false;
+        contact.setStatus(ApplicationConstants.DEFAULT_CONTACT_STATUS);
+        contact.setCreatedBy(ApplicationConstants.ANONYMOUS);
+        contact.setCreatedAt(LocalDateTime.now());
+        int result = contactRepository.saveContact(contact);
+        if(result > 0)
+            isSaved = true;
+        return isSaved;
     }
 }
