@@ -4,17 +4,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 
 @Slf4j
-@Configuration
+@Component
 @Aspect
 public class LoggerAspect{
 
-    @Around("execution(* com.example.springproject.*.*(..))")
+    @Around("execution(* com.example.springproject.*.*.*(..))")
     public Object logExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        String methodName = proceedingJoinPoint.getSignature().getName();
+        String methodName = proceedingJoinPoint.getSignature().toString();
         log.info("Started execution of method : " + methodName);
         long startTime = System.currentTimeMillis();
         Object returnValue = proceedingJoinPoint.proceed();
